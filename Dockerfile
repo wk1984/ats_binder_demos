@@ -13,6 +13,8 @@ ENV NB_UID 1000
 ENV HOME /home/${NB_USER}
 RUN adduser --disabled-password --gecos "Default user" --uid ${NB_UID} ${NB_USER}
 
+RUN chown -R ${NB_USER}:${NB_USER} ${HOME}
+
 # Switch to the user
 USER ${NB_USER}
 
@@ -23,8 +25,6 @@ COPY *.cfg ${HOME}/
 COPY *.xml ${HOME}/
 COPY *.ipynb ${HOME}/
 COPY *.py ${HOME}/
-
-RUN chown -R ${NB_USER}:${NB_USER} ${HOME}
 
 # # Switch to the user
 # USER ${NB_USER}
