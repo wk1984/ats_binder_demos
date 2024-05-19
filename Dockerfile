@@ -16,9 +16,9 @@ RUN adduser --disabled-password --gecos "Default user" --uid ${NB_UID} ${NB_USER
 # Make sure the contents of the notebooks directory are in ${HOME}
 
 COPY data/ ${HOME}/data
-COPY *.cfg ${HOME}
-COPY *.xml ${HOME}
-COPY *.ipynb ${HOME}
+COPY *.cfg ${HOME}/
+COPY *.xml ${HOME}/
+COPY *.ipynb ${HOME}/
 
 RUN chown -R ${NB_USER}:${NB_USER} ${HOME}
 
